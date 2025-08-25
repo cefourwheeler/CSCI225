@@ -2,6 +2,28 @@
 <html>
     <head>
         <title>WebpageCSCI225 Caleb Wheeler</title>
+        <style>
+            .marquee-box {
+                width: 300px;
+                height: 40px;
+                overflow: hidden;
+                border: 2px solid #333;
+                position: relative;
+                background: #f9f9f9;
+                margin-top: 20px;
+            }
+            .marquee-text {
+                display: inline-block;
+                white-space: nowrap;
+                position: absolute;
+                will-change: transform;
+                animation: marquee 6s linear infinite;
+            }
+            @keyframes marquee {
+                0% { left: 100%; }
+                100% { left: -100%; }
+            }
+        </style>
     </head>
     <body>
         <h1>Welcome to WebpageCSCI225 Caleb Wheeler</h1>
@@ -9,6 +31,6 @@
         <p>
             This is a web page. My name is Caleb Wheeler. hi.
         </p>
-    </body>
-
-</html>
+        <div class="marquee-box">
+            <span class="marquee-text">This is moving marquee text in a box!</span>
+        </div>
