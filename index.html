@@ -2,58 +2,7 @@
 <html>
     <head>
         <title>WebpageCSCI225 Caleb Wheeler</title>
-        <style>
-            .marquee-box {
-                width: 300px;
-                height: 40px;
-                overflow: hidden;
-                border: 2px solid #0df283;
-                position: relative;
-                background: #f9f9f9;
-                margin-top: 20px;
-            }
-            .marquee-text {
-                display: inline-block;
-                white-space: nowrap;
-                position: absolute;
-                will-change: transform;
-                animation: marquee 6s linear infinite;
-            }
-            @keyframes marquee {
-                0% { left: 100%; }
-                100% { left: -100%; }
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Welcome to WebpageCSCI225 Caleb Wheeler</h1>
-        <br>
-        <p>
-            This is a web page. My name is Caleb Wheeler. hi.
-        </p>
-        <marquee style="color: red;" direction="up">This is a far more basic marquee than the other one</marquee>
-        <br>
-        <div class="marquee-box">
-            <span class="marquee-text">This should be moving hopefully</span>
-        </div>
-        <details>
-            <summary>Trying to see if this works</summary>
-            <p>This should be more info after clicked not sure if i did it correctly</p>
-        </details>
-        <meter 
-            min="0" max="100" low="20" high="80" optimum="50" value="65">
-        </meter>
-        <label for="coolRange">Try the slider(just looks cool): </label>
-        <input type="range" id="coolRange" min="0" max="100" value="50" oninput="rangeValue.textContent = this.value">
-        <span id="rangeValue">50</span>
-        <dialog open>
-            <p>
-                This is a dialog box.
-            </p>
-            <button>
-                This is a button
-            </button>
-        </dialog>
+        <p>This is a web page. My name is Caleb Wheeler. hi.</p>
 
     </body>
 </html>
