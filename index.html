@@ -1,131 +1,145 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>CSCI225 Homepage of Caleb Wheeler</title>
-        <p>This is a web page for school. My name is Caleb Wheeler.</p>
-    </head>
-    <body>
-        <!-- Navigation Bar -->
-        <div class="navbar">
-                <ul>
-                <li><a href="https://www.usca.edu/">USC Aiken</a></li>
-                <li><a href="#Assignment">Assignment</a></li>
-                <li><a href="#Portfolio">Portfolio</a></li>
-                <li><a href="#Address">Contact Information</a></li>
-                <li><a href="#Schedule">Schedule</a></li>
-                </ul>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CSCI225 — Caleb Wheeler</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    <header class="navbar" role="banner">
+        <div class="site-title"><h1>CSCI225 — Caleb Wheeler</h1></div>
+        <nav class="main-nav" role="navigation" aria-label="Primary">
+            <a href="#intro">Intro</a>
+            <a href="#schedule">Schedule</a>
+            <a href="#contact">Contact</a>
+            <a href="#assignment">Assignment</a>
+            <a href="#portfolio">Portfolio</a>
+        </nav>
+    </header>
+
+    <!-- INTRODUCTION -->
+    <section id="intro" class="section intro" aria-labelledby="intro-title">
+        <h1 class="float-title" id="intro-title"><a class="float-link" href="#intro">INTRODUCTION</a></h1>
+
+        <div class="section-body">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h2 class="large-title">INTRODUCTION</h2>
+                    <p>My name is Caleb Wheeler and I'm a student at USC Aiken. I am in my second year studying computer science. I look forward to learning how to code and building creative webpages.</p>
+                </div>
+                <img src="img/smily_dude.png" alt="Picture of Me" class="intro-img" />
+            </div>
+            <a class="oval-quote" href="https://fonts.google.com/" target="_blank" rel="noopener noreferrer">Explore · Learn · Build</a>
         </div>
-        <hr>
-        <!-- Introduction-->
-        <div class="Introduction">
-            <h1>Introduction</h1>
-            <p>My name is Caleb Wheeler and I'm a student at USC Aiken. I am in my second year studying computer science. I look forward to learn how to code. I have enjoyed learning a little bit about webpage design and how to be able to make fun and creative webpages in the future.</p>
-            <img src="img/smily_dude.png" alt="Picture of Me" width="300" height="400">
-        </div>
-        <hr>
-        <!-- Assignment-->
-        <div class="Assignment">
-            <h1>Assignment</h1>
+    </section>
+
+    <!-- ASSIGNMENTS -->
+    <aside id="assignment" class="section assignment" aria-labelledby="assignment-title">
+        <h1 class="float-title" id="assignment-title"><a class="float-link" href="#assignment">ASSIGNMENTS</a></h1>
+
+        <div class="section-body">
+            <h2 id="assignment-title-vis">ASSIGNMENTS</h2>
             <ol>
-                <li><a href="https://acrobat.adobe.com/id/urn:aaid:sc:va6c2:71561a75-38e1-4376-bfb7-7fd96ff4037e">Assignment 1</a></li>
-                <li><a href="Assignment2.pdf">Assignment 2</a></li>
-                <li><a href="ContactMe.html">Contact Me</a></li>
+                <li><a href="#">Assignment 1</a></li>
+                <li><a href="#">Assignment 2</a></li>
+                <li><a href="#">Assignment 3</a></li>
             </ol>
-            
         </div>
-        <hr>
-        <!--Portfolio-->
-        <div class="Portfolio">
-            <h1>Portfolio</h1>
+    </aside>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="section portfolio" aria-labelledby="portfolio-title">
+        <h1 class="float-title" id="portfolio-title"><a class="float-link" href="#portfolio">PORTFOLIO</a></h1>
+
+        <div class="section-body">
+            <h2 id="portfolio-title-vis">PORTFOLIO</h2>
+            <p>Links to projects and short descriptions.</p>
             <ul>
-                <li><a href="FunGamePage.html">Fun Game Page(work in progress)</a></li>
-                <ul>
-                    <li>
-                        <details>
-                            <summary style ="cursor: pointer;">Description</summary>
-                            <p><mark>This is a fun side project I have been working on to give me a place to talk about games I like and learn more about web development.</mark></p>
-                        </details>
-                    </li>
-                </ul>
+                <li><a href="#">Project 1</a></li>
+                <li><a href="#">Project 2</a></li>
             </ul>
         </div>
-        <hr>
-        <!--Address-->
-        <div class="Address">
-            <p>Contact Information</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+        <h1 class="float-title" id="contact-title"><a class="float-link" href="#contact">CONTACT</a></h1>
+
+        <div class="section-body">
+            <h2 id="contact-title-vis">CONTACT INFORMATION</h2>
             <p>Email: <a href="mailto:cew62@usca.edu">cew62@usca.edu</a></p>
         </div>
-        <hr>
-        <!--Schedule-->
-        <div class="Schedule">
-            <h1>Schedule</h1>
-            <table border="1">
-            <tr>
-                <td>Time</td>
-                <td>Monday</td>
-                <td>Tuesday</td>
-                <td>Wednesday</td>
-                <td>Thursday</td>
-                <td>Friday</td>
-            </tr>
-            <tr>
-                <td>10:00 - 11:00</td>
-                <td rowspan="2">Security (10:00–11:15)</td>
-                <td rowspan="2">Communications (10:50–12:00)</td>
-                <td rowspan="2">Security (10:00–11:15)</td>
-                <td rowspan="2">Communications (10:50–12:00)</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>11:00 - 12:00</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>12:00 - 1:00</td>
-                <td rowspan="2">Webpage Design (12:00–1:15)</td>
-                <td rowspan="2">Accounting (12:15–1:30)</td>
-                <td rowspan="2">Webpage Design (12:00–1:15)</td>
-                <td rowspan="2">Accounting (12:15–1:30)</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>1:00 - 2:00</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>2:00 - 3:00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>3:00 - 4:00</td>
-                <td rowspan="3">Algorithmic Design II (3:00–5:40)</td>
-                <td></td>
-                <td rowspan="3">Algorithmic Design II (3:00–5:40)</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>4:00 - 5:00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>5:00 - 6:00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            </table>
+    </section>
 
+    <!-- SCHEDULE -->
+    <section id="schedule" class="section schedule" aria-labelledby="schedule-title">
+        <h1 class="float-title" id="schedule-title"><a class="float-link" href="#schedule">SCHEDULE</a></h1>
+
+        <div class="section-body">
+            <h2 id="schedule-title-vis">SCHEDULE</h2>
+            <p class="hint">Click any editable cell to enter or change a class. Friday–Sunday are "No classes".</p>
+            <table class="schedule-table" role="table" border="1" aria-label="Weekly schedule">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10:00 - 11:15</td>
+                        <td contenteditable="true">Class (10:00–11:15)</td>
+                        <td></td>
+                        <td contenteditable="true">Class (10:00–11:15)</td>
+                        <td></td>
+                        <td class="no-class" colspan="3" contenteditable="false">No classes</td>
+                    </tr>
+                    <tr>
+                        <td>10:50 - 12:00</td>
+                        <td></td>
+                        <td contenteditable="true">Class (10:50–12:00)</td>
+                        <td></td>
+                        <td contenteditable="true">Class (10:50–12:00)</td>
+                        <td class="no-class" colspan="3" contenteditable="false">No classes</td>
+                    </tr>
+                    <tr>
+                        <td>12:00 - 1:15</td>
+                        <td contenteditable="true">Class (12:00–1:15)</td>
+                        <td></td>
+                        <td contenteditable="true">Class (12:00–1:15)</td>
+                        <td></td>
+                        <td class="no-class" colspan="3" contenteditable="false">No classes</td>
+                    </tr>
+                    <tr>
+                        <td>12:15 - 1:30</td>
+                        <td></td>
+                        <td contenteditable="true">Class (12:15–1:30)</td>
+                        <td></td>
+                        <td contenteditable="true">Class (12:15–1:30)</td>
+                        <td class="no-class" colspan="3" contenteditable="false">No classes</td>
+                    </tr>
+                    <tr>
+                        <td>3:00 - 5:40</td>
+                        <td contenteditable="true">Class (3:00–5:40)</td>
+                        <td></td>
+                        <td contenteditable="true">Class (3:00–5:40)</td>
+                        <td></td>
+                        <td class="no-class" colspan="3" contenteditable="false">No classes</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <br>
-        <footer>
-            <p>&copy; 2025-2026 Caleb Wheeler</p>
-        </footer>
-    </body>
+    </section>
+
+    <footer class="site-footer" role="contentinfo">
+        <p>&copy; 2025 Caleb Wheeler</p>
+    </footer>
+</body>
 </html>
