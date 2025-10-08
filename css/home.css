@@ -25,7 +25,7 @@ p{
 }
 
 h1{
-    transform: uppercase;
+    text-transform: uppercase;
     letter-spacing: 2px;
     border-top-left-radius: 90px;
 }
