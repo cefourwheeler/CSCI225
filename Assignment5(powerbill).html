@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Georgia Power Bill Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: inline-block;
+            width: 200px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Georgia Power Bill Calculator</h1>
+    <br>
+    <p>
+        The utility bill calculator is a resource that the Commission is making available that allows a consumer to
+        check the accuracy of his/her monthly electric bill. A bill calculator has been prepared for customers of the
+        Georgia Power Company. This bill calculator applies only to residential customers who are receiving service
+        under the standard Residential Tariff. For more details regarding Georgia Power's residential tariff please
+        visit the Georgia Power Pricing & Rates page.
+    </p>
+    <div class="form-group">
+        <label for="monthlyUsage">Monthly Usage (kWh):</label>
+        <input type="number" id="monthlyUsage" required>
+    </div>
+    <div class="form-group">
+        <label for="days">Days for the bill:</label>
+        <input type="number" id="days" required>
+    </div>
+    <div class="form-group">
+        <label for="insideCity">Location:</label>
+        <input type="radio" id="insideCity" name="location" value="inside" checked>
+        <label for="insideCity">Inside City</label>
+        <input type="radio" id="outsideCity" name="location" value="outside">
+        <label for="outsideCity">Outside City</label>
+    </div>
+    <div class="form-group">
+        <label for="season">Season:</label>
+        <input type="radio" id="summer" name="season" value="summer" checked>
+        <label for="summer">Summer (June-Sept)</label>
+        <input type="radio" id="winter" name="season" value="winter">
+        <label for="winter">Winter (Oct-May)</label>
+    </div>
+    <div class="form-group">
+        <label for="taxRate">Tax Rate (%):</label>
+        <input type="number" id="taxRate" step="0.01" required>
+    </div>
+    <button onclick="calculateBill()">Calculate Bill</button>
+
+    <div id="results" class="result" style="display: none;">
+        <h2>Bill Breakdown</h2>
+        <p>Base Charge: $<span id="baseCharge"></span></p>
+        <p>Tier 1 Charge: $<span id="tier1Charge"></span></p>
+        <p>Tier 2 Charge: $<span id="tier2Charge"></span></p>
+        <p>Tier 3 Charge: $<span id="tier3Charge"></span></p>
+        <p>Base Revenue: $<span id="baseRevenue"></span></p>
+        <p>Fuel Cost: $<span id="fuelCost"></span></p>
+        <p>Demand Side Management: $<span id="demandSide"></span></p>
+        <p>Nuclear Construction Cost: $<span id="nuclearCost"></span></p>
+        <p>Environmental Compliance: $<span id="environmentalCost"></span></p>
+        <p>Total Revenue: $<span id="totalRevenue"></span></p>
+        <p>Franchise Fee: $<span id="franchiseFee"></span></p>
+        <p>Subtotal: $<span id="subtotal"></span></p>
+        <p>Tax: $<span id="tax"></span></p>
+        <p><strong>Total Bill: $<span id="totalBill"></span></strong></p>
+    </div>
+
+    <script>
+        function calculateBill() {
+            // Get input values
+            const monthlyUsage = parseFloat(document.getElementById('monthlyUsage').value);
+            const days = parseFloat(document.getElementById('days').value);
+            const taxRate = parseFloat(document.getElementById('taxRate').value) / 100;
+            const isInsideCity = document.querySelector('input[name="location"]:checked').value === 'inside';
+            const isSummer = document.querySelector('input[name="season"]:checked').value === 'summer';
+
+            // sumer and winter rates
+            const BASE_CHARGE_PER_DAY = 0.4603;
+            const SUMMER_RATES = {
+                tier1: 0.066678,
+                tier2: 0.110748,
+                tier3: 0.114625
+            };
+            const WINTER_RATES = {
+                tier1: 0.062404,
+                tier2: 0.062404,
+                tier3: 0.062404
+            };
+            const FUEL_COST = isSummer ? 0.045876 : 0.042859;
+            const DEMAND_SIDE_RATE = 0.015989;
+            const NUCLEAR_COST_RATE = 0.041562;
+            const ENVIRONMENTAL_RATE = 0.162813;
+            const FRANCHISE_RATE = isInsideCity ? 0.030674 : 0.011839;
+
+            // Calculate base charge
+            const baseCharge = BASE_CHARGE_PER_DAY * days;
+
+            // Calculate tier charges
+            const rates = isSummer ? SUMMER_RATES : WINTER_RATES;
+            let tier1Usage = Math.min(monthlyUsage, 650);
+            let tier2Usage = Math.min(Math.max(monthlyUsage - 650, 0), 350);
+            let tier3Usage = Math.max(monthlyUsage - 1000, 0);
+
+            const tier1Charge = tier1Usage * rates.tier1;
+            const tier2Charge = tier2Usage * rates.tier2;
+            const tier3Charge = tier3Usage * rates.tier3;
+
+            // Calculate base revenue
+            const baseRevenue = baseCharge + tier1Charge + tier2Charge + tier3Charge;
+
+            // Calculate additional costs
+            const fuelCost = monthlyUsage * FUEL_COST;
+            const demandSide = baseRevenue * DEMAND_SIDE_RATE;
+            const nuclearCost = baseRevenue * NUCLEAR_COST_RATE;
+            const environmentalCost = baseRevenue * ENVIRONMENTAL_RATE;
+
+            // Calculate total rev
+            const totalRevenue = baseRevenue + fuelCost + demandSide + nuclearCost + environmentalCost;
+
+            // Calculate fee
+            const franchiseFee = totalRevenue * FRANCHISE_RATE;
+
+            // Calculate final totals
+            const subtotal = totalRevenue + franchiseFee;
+            const tax = subtotal * taxRate;
+            const totalBill = subtotal + tax;
+
+            //  results
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('baseCharge').textContent = baseCharge.toFixed(2);
+            document.getElementById('tier1Charge').textContent = tier1Charge.toFixed(2);
+            document.getElementById('tier2Charge').textContent = tier2Charge.toFixed(2);
+            document.getElementById('tier3Charge').textContent = tier3Charge.toFixed(2);
+            document.getElementById('baseRevenue').textContent = baseRevenue.toFixed(2);
+            document.getElementById('fuelCost').textContent = fuelCost.toFixed(2);
+            document.getElementById('demandSide').textContent = demandSide.toFixed(2);
+            document.getElementById('nuclearCost').textContent = nuclearCost.toFixed(2);
+            document.getElementById('environmentalCost').textContent = environmentalCost.toFixed(2);
+            document.getElementById('totalRevenue').textContent = totalRevenue.toFixed(2);
+            document.getElementById('franchiseFee').textContent = franchiseFee.toFixed(2);
+            document.getElementById('subtotal').textContent = subtotal.toFixed(2);
+            document.getElementById('tax').textContent = tax.toFixed(2);
+            document.getElementById('totalBill').textContent = totalBill.toFixed(2);
+
+            // Open GA power if bill is over 500 bucks
+            if (totalBill > 500) {
+                window.open('https://www.georgiapower.com/residential/save-money-and-energy/products-programs.html', '_blank');
+            }
+        }
+    </script>
+</body>
+
+</html>
